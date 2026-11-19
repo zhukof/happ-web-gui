@@ -2,7 +2,7 @@
 FROM golang:1.26-bookworm AS happ-build
 RUN apt-get update && apt-get install -y --no-install-recommends git ca-certificates && rm -rf /var/lib/apt/lists/*
 ARG HAPP_REF=main
-RUN git clone https://github.com/GenkaOk/happ-cli.git /happ-src && cd /happ-src && git checkout "$HAPP_REF"
+RUN git clone https://github.com/zhukof/happ-cli.git /happ-src && cd /happ-src && git checkout "$HAPP_REF"
 WORKDIR /happ-src
 RUN go build -trimpath -o /out/happ ./cmd/happ
 
