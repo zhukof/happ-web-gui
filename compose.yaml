@@ -1,0 +1,14 @@
+services:
+  happ-control:
+    build:
+      context: .
+      args:
+        HAPP_REF: ${HAPP_REF:-main}
+    container_name: happ-control
+    restart: unless-stopped
+    ports:
+      - "${LAN_IP:-0.0.0.0}:8080:8080"
+      - "${LAN_IP:-0.0.0.0}:11080:11080"
+      - "${LAN_IP:-0.0.0.0}:11081:11081"
+    volumes:
+      - ./data:/data
